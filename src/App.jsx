@@ -1,18 +1,18 @@
 import React from 'react';
-import Hero from './components/Hero.jsx';
-import WhySection from './components/WhySection.jsx';
-import ImpactSection from './components/ImpactSection.jsx';
-import CTASocialFooter from './components/CTASocialFooter.jsx';
+import Hero from './components/Hero';
+import WhySection from './components/WhySection';
+import ImpactSection from './components/ImpactSection';
+import CTASocialFooter from './components/CTASocialFooter';
 
-function App() {
+const App = () => {
   return (
-    <div className="min-h-screen bg-[#08060d] antialiased">
+    <div className="font-inter antialiased">
       <Hero />
       <WhySection />
       <ImpactSection />
       <CTASocialFooter />
     </div>
   );
-}
+};
 
 export default App;

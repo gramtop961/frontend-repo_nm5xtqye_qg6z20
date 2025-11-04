@@ -1,67 +1,62 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const SocialIcon = ({ href, label, Icon }) => (
-  <a
-    href={href}
-    aria-label={label}
-    className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/15 text-white hover:bg-white/15 transition-colors"
-  >
-    <Icon className="h-5 w-5" />
-  </a>
-);
+import { Mail, Share2, Link as LinkIcon } from 'lucide-react';
 
 const CTASocialFooter = () => {
   return (
-    <footer className="relative py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl px-6">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#3b1a66]/80 via-[#5b2b8d]/80 to-[#2b1c5a]/80 p-8 sm:p-10 ring-1 ring-white/10 shadow-2xl shadow-purple-900/30"
-        >
-          <div className="pointer-events-none absolute -top-20 -left-10 h-64 w-64 rounded-full bg-white/20 blur-3xl opacity-20" />
-          <div className="pointer-events-none absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-fuchsia-300/20 blur-3xl opacity-30" />
+    <section className="relative w-full bg-[#0b0616] py-16 text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-0 h-56 w-56 -translate-x-1/2 rounded-full bg-fuchsia-600/10 blur-3xl" />
+      </div>
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-            <div className="lg:col-span-2">
-              <h3 className="text-2xl sm:text-3xl font-semibold text-white">Support AI Smart Signals for Gunai County</h3>
-              <p className="mt-2 text-white/85 max-w-2xl">Let’s build a road system where progress never stops — even at a red light.</p>
-              <div className="mt-5 flex flex-col sm:flex-row gap-3">
-                <a href="#" className="inline-flex items-center justify-center rounded-full bg-white text-neutral-900 px-6 py-3 text-sm font-medium shadow-lg ring-1 ring-white/10 hover:translate-y-[-1px] transition-transform">Sign the Petition</a>
-                <a href="#" className="inline-flex items-center justify-center rounded-full bg-white/10 text-white px-6 py-3 text-sm font-medium ring-1 ring-white/15 hover:bg-white/15">Read Community FAQ</a>
-              </div>
-            </div>
-            <div className="flex flex-col items-start lg:items-end gap-4">
-              <span className="text-sm font-medium text-white/80">Share</span>
-              <div className="flex items-center gap-3">
-                <SocialIcon href="#" label="Share on Facebook" Icon={Facebook} />
-                <SocialIcon href="#" label="Share on Twitter" Icon={Twitter} />
-                <SocialIcon href="#" label="Share on Instagram" Icon={Instagram} />
-                <SocialIcon href="#" label="Share via Email" Icon={Mail} />
-              </div>
-            </div>
+      <div className="relative z-10 mx-auto max-w-5xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="rounded-2xl bg-gradient-to-br from-fuchsia-600/15 to-indigo-600/15 p-8 text-center ring-1 ring-white/10 backdrop-blur"
+        >
+          <h3 className="text-2xl font-semibold">Bring Smarter Signals to Gunai County</h3>
+          <p className="mx-auto mt-2 max-w-2xl text-white/80">
+            Add your name to support pilot intersections and transparent performance dashboards.
+          </p>
+
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href="#petition"
+              className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-fuchsia-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/20 ring-1 ring-white/10 transition hover:brightness-110"
+            >
+              Sign the petition
+            </a>
+            <a
+              href="#share"
+              className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur transition hover:bg-white/15"
+            >
+              <Share2 className="h-4 w-4" /> Share
+            </a>
+            <a
+              href="mailto:info@gunai.gov"
+              className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur transition hover:bg-white/15"
+            >
+              <Mail className="h-4 w-4" /> Contact
+            </a>
           </div>
         </motion.div>
 
-        <div className="mt-10 text-white/75">
-          <div className="text-sm">Technology is evolving — our roads must too. These smart signals create a safer, more eco‑friendly network that supports growth for the next 20+ years.</div>
-        </div>
-
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/60">
-          <div>© 2025 Muse Abraham</div>
-          <nav className="flex items-center gap-5">
-            <a href="#why" className="hover:text-white">Why AI</a>
-            <a href="#impact" className="hover:text-white">Impact</a>
-            <a href="#" className="hover:text-white">Privacy</a>
-            <a href="#" className="hover:text-white">Contact</a>
-          </nav>
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-white/70 sm:flex-row">
+          <p>© 2025 Muse Abraham • Gunai County</p>
+          <div className="flex items-center gap-4">
+            <a href="#about" className="hover:text-white">About</a>
+            <a href="#privacy" className="hover:text-white">Privacy</a>
+            <a href="#open-data" className="hover:text-white">Open Data</a>
+            <a href="#copy" className="inline-flex items-center gap-1 hover:text-white">
+              <LinkIcon className="h-4 w-4" /> Copy link
+            </a>
+          </div>
         </div>
       </div>
-    </footer>
+    </section>
   );
 };
 

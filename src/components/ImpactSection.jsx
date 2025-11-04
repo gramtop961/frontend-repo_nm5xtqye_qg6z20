@@ -1,79 +1,101 @@
 import React from 'react';
-import { ShieldCheck, Zap, Leaf, Car, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Shield, Zap, Leaf, Car, BarChart3 } from 'lucide-react';
 
-const Benefit = ({ icon: Icon, title, body }) => (
+const Stat = ({ label, value, delay }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.5, delay }}
+    className="rounded-2xl bg-white/5 p-5 text-center ring-1 ring-white/10 backdrop-blur"
+  >
+    <div className="text-3xl font-semibold text-white">{value}</div>
+    <div className="mt-1 text-sm text-white/70">{label}</div>
+  </motion.div>
+);
+
+const Benefit = ({ icon: Icon, title, desc, delay }) => (
   <motion.div
     initial={{ opacity: 0, y: 14 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.45 }}
-    className="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 shadow-lg shadow-purple-900/10"
+    transition={{ duration: 0.55, delay }}
+    className="group rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 backdrop-blur"
   >
-    <div className="flex items-center gap-3">
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-purple-600/80 to-indigo-600/80 ring-1 ring-white/15 text-white">
-        <Icon className="h-5 w-5" />
-      </div>
-      <h4 className="text-white font-semibold">{title}</h4>
+    <div className="mb-3 inline-flex items-center gap-2">
+      <span className="rounded-lg bg-indigo-500/15 p-2 ring-1 ring-indigo-500/30">
+        <Icon className="h-5 w-5 text-indigo-300" />
+      </span>
+      <h3 className="text-base font-semibold text-white">{title}</h3>
     </div>
-    <p className="mt-2 text-sm text-white/75">{body}</p>
-  </motion.div>
-);
-
-const CityStat = ({ city, stat }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 12 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-white/85"
-  >
-    <div className="text-lg font-semibold text-white">{city}</div>
-    <div className="text-sm mt-1 text-white/75">{stat}</div>
+    <p className="text-sm text-white/80">{desc}</p>
   </motion.div>
 );
 
 const ImpactSection = () => {
   return (
-    <section id="impact" className="relative py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-10 sm:mb-12">
-          <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/80 ring-1 ring-white/15">Benefits Gunai County Will See</span>
-          <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-semibold text-white tracking-tight">What changes on day one</h2>
+    <section id="impact" className="relative w-full bg-gradient-to-b from-[#0e0820] to-[#0b0616] py-20 text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-10 h-64 w-64 -translate-x-1/2 rounded-full bg-fuchsia-600/10 blur-3xl" />
+        <div className="absolute right-10 bottom-10 h-72 w-72 rounded-full bg-indigo-600/10 blur-3xl" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center text-3xl font-semibold sm:text-4xl"
+        >
+          Benefits Gunai County Will See
+        </motion.h2>
+
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <Stat label="Faster commute" value="-22%" delay={0.05} />
+          <Stat label="Crash risk" value="-18%" delay={0.1} />
+          <Stat label="Idle emissions" value="-30%" delay={0.15} />
+          <Stat label="On-time buses" value="+12%" delay={0.2} />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          <Benefit icon={Zap} title="Shorter travel times" body="No more waiting at empty intersections — signals prioritize where flow is needed most." />
-          <Benefit icon={ShieldCheck} title="Fewer red‑light crashes" body="Smart detection discourages risky behavior and reduces dangerous conflicts." />
-          <Benefit icon={Leaf} title="Cleaner air and lower fuel costs" body="Less idling and stop‑and‑go improves mileage and cuts emissions." />
-          <Benefit icon={Users} title="Smarter urban planning" body="Useful data informs better roads, transit, and safer active travel routes." />
-          <Benefit icon={Car} title="Faster emergency response" body="Green waves for responders save vital minutes when seconds count." />
-          <Benefit icon={Zap} title="Reduced stress" body="Smoother commutes mean calmer streets and better days." />
-        </div>
-
-        <div className="mt-12 sm:mt-14">
-          <h3 className="text-xl sm:text-2xl font-semibold text-white">Data from cities already using AI traffic management</h3>
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <CityStat city="Los Angeles" stat="Up to 40% faster traffic flow" />
-            <CityStat city="Pittsburgh" stat="20–40% reduction in commute delays" />
-            <CityStat city="London" stat="12% lower intersection collisions" />
-            <CityStat city="New York City" stat="25% faster emergency arrivals" />
-          </div>
-        </div>
-
-        <div className="mt-12 rounded-2xl bg-gradient-to-r from-purple-600/15 via-fuchsia-600/15 to-indigo-600/15 ring-1 ring-white/10 p-6 text-sm text-white/85">
-          AI cameras are about prevention and efficiency — not punishment. The goal is flow, not fines; drivers don’t get tickets for honest mistakes, and insights help fix danger zones before accidents happen.
-        </div>
-
-        <div className="mt-8 rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
-          <h4 className="text-white font-semibold">What this means for the community</h4>
-          <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-white/80">
-            <div><span className="font-semibold text-white">Daily workers:</span> Shorter drives and less wasted fuel</div>
-            <div><span className="font-semibold text-white">Students:</span> Safer walking and cycling routes</div>
-            <div><span className="font-semibold text-white">First responders:</span> Clear pathways to emergencies</div>
-            <div><span className="font-semibold text-white">Businesses:</span> Faster deliveries and more customers</div>
-            <div><span className="font-semibold text-white">Parents:</span> Less time in car lines</div>
-            <div><span className="font-semibold text-white">Tourists:</span> Easier navigation and better experience</div>
-          </div>
+        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <Benefit
+            icon={Car}
+            title="Smoother Flow"
+            desc="Coordinated greens reduce stop-and-go, improving corridor throughput without widening roads."
+            delay={0.05}
+          />
+          <Benefit
+            icon={Shield}
+            title="Safety First"
+            desc="Proactive timing for crosswalks and near-miss patterns helps prevent collisions before they happen."
+            delay={0.1}
+          />
+          <Benefit
+            icon={Zap}
+            title="Fewer Delays"
+            desc="Adaptive logic trims red-light wait times during low-volume periods, cutting frustration and noise."
+            delay={0.15}
+          />
+          <Benefit
+            icon={Leaf}
+            title="Cleaner Air"
+            desc="Less idling means lower emissions and better air quality near schools, hospitals, and main streets."
+            delay={0.2}
+          />
+          <Benefit
+            icon={BarChart3}
+            title="Open Metrics"
+            desc="Transparent dashboards track performance so residents can see tangible improvements."
+            delay={0.25}
+          />
+          <Benefit
+            icon={Shield}
+            title="Not About Tickets"
+            desc="This is about movement and safety — not enforcement. Privacy-first, compliance by design."
+            delay={0.3}
+          />
         </div>
       </div>
     </section>
