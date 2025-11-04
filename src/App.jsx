@@ -1,12 +1,12 @@
 import React from 'react';
-import Hero from './components/Hero';
-import WhySection from './components/WhySection';
-import ImpactSection from './components/ImpactSection';
-import CTASocialFooter from './components/CTASocialFooter';
+import Hero from './components/Hero.jsx';
+import WhySection from './components/WhySection.jsx';
+import ImpactSection from './components/ImpactSection.jsx';
+import CTASocialFooter from './components/CTASocialFooter.jsx';
 
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen w-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-purple-900 via-purple-800 to-purple-900 text-white">
+    <div className="min-h-screen bg-[#08060d] antialiased">
       <Hero />
       <WhySection />
       <ImpactSection />
@@ -14,3 +14,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
